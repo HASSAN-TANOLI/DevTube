@@ -1,22 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
-width: 350px;
-margin-bottom: 35px;
+width: ${(props) => props.type !== "sm" && "350px"};
+margin-bottom: ${(props) => props.type === "sm" ? "10px" : "45px"};
 cursor: pointer;
+display: ${(props) => props.type === "sm" && "flex"};
+gap: 10px;
 `;
 
 const Image = styled.img`
 width: 100%;
-height: 202px;
+height: ${(props) => props.type === "sm" ? "120px" : "202px"};
+flex: 1;
 border-color: #999;
 `;
 
 const Details = styled.div`
 display: flex;
-margin-top: 10px;
-
+margin-top: ${(props) => props.type === "sm" && "10px"};
+flex: 1;
 gap: 12px;
 
 `;
@@ -27,6 +31,7 @@ height: 36px;
 border-radius: 50%;
 background-color: #999;
 margin-top: 10px;
+display: ${(props) => props.type === "sm" && "none"};
 
 
 `;
@@ -50,14 +55,15 @@ font-size: 14px;
 color: ${({theme})=> theme.textSoft};
 margin-top: 10px 0px;
 `;
-const Card = () => {
+const Card = ({type}) => {
 
   return (
-    <Container>
-     <Image src="https://cdn.windowsreport.com/wp-content/uploads/2022/04/Untitled-design-2-2.jpg"/>
+   <Link to="/video/test" style={{textDecoration: "none"}}>
+    <Container type={type}>
+     <Image type={type} src="https://cdn.windowsreport.com/wp-content/uploads/2022/04/Untitled-design-2-2.jpg"/>
 
-      <Details>
-        <ChannelImage src="https://www.creatopy.com/blog/wp-content/uploads/2018/01/Youtube-Channel-Template-Final-1.png "/>
+      <Details type={type}>
+        <ChannelImage type={type} src="https://www.creatopy.com/blog/wp-content/uploads/2018/01/Youtube-Channel-Template-Final-1.png "/>
         <Texts>
           <Title>
             Test Video
@@ -68,6 +74,7 @@ const Card = () => {
       </Details>
 
     </Container>
+   </Link>
   )
 
 

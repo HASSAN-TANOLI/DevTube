@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import styled from 'styled-components'
 import DevTube from "../img/logo.png"
 import HomeIcon from '@mui/icons-material/Home';
@@ -49,6 +50,10 @@ const Item = styled.div`
     gap: 20px;
     cursor: pointer;
     padding: 7.5px 0px;
+
+    &:hover{
+        background-color: ${({theme}) => theme.soft};
+    }
 `
 
 const Hr = styled.hr`
@@ -87,10 +92,14 @@ const Menu = ({darkMode, setDarkMode}) => {
   return (
     <Container>
         <Wrapper>
+            
+            <Link to="/" style={{textDecoration: "none", color: "inherit"}}>
+
             <Logo>
                 <Img src={DevTube} />
                 devTube
             </Logo>
+            </Link>
             <Item>
                 <HomeIcon/>
                 Home
@@ -172,7 +181,7 @@ const Menu = ({darkMode, setDarkMode}) => {
 
             <Item onClick={()=> setDarkMode(!darkMode)}>
                 <SettingsBrightnessIcon/>
-                Light Mode
+                {darkMode ? "Light" : "Dark"} Mode
             </Item>
 
         </Wrapper>

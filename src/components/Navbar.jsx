@@ -33,11 +33,15 @@ width: 40%;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  outline: none;
+  background-color: transparent;
+  
   
 `
 const Input = styled.input`
   border: none;
   background-color: transparent;
+  outline: none;
 `
 
 const Button = styled.button`
